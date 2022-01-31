@@ -1,16 +1,23 @@
+import {useState} from 'react';
+
 const Content = () => {
+    const [name, setName] = useState('Gian');
+    const [count, setCount] = useState(0);
+
 	const handleNameChange = () => {
 		const names = ['Bob', 'Kevin', 'Gian'];
 		const int = Math.floor(Math.random() * 3);
-		return names[int];
+		setName(names[int]);
 	}
 
     const handleClick = () => {
-        console.log('You clicked it')
+        setCount(count + 1)
+        setCount(count + 1)
+        console.log(count)
 	}
 
     const handleClick2 = (name) => {
-        console.log(`${name} was clicked`)
+        console.log(count)
 	}
 
     const handleClick3 = (e) => {
@@ -20,18 +27,14 @@ const Content = () => {
 	return (
 			<main>
 				<p onDoubleClick={handleClick}>
-                    {/* when the function called has paramenters
-                    (use parenthesis) 
-                    it is called inmediately */}
-					Hello {handleNameChange()}!
+					Hello {name}!
 				</p>
-                {/* does not have "()" to do not make the call inmediately */}
-				<button onClick={handleClick}>Click it</button>
+				<button onClick={handleNameChange}>Change Name</button>
                 {/* the following button has an onclick function with paramenters
                 but it is not called inmediately because it has an annonymous
                 function calling it, that it starts when the onclick is done */}
-				<button onClick={() => handleClick2('Gian')}>Click it</button>
-				<button onClick={(e) => handleClick3(e)}>Click it</button>
+				<button onClick={handleClick}>Click it</button>
+				<button onClick={handleClick2}>Click it</button>
 			</main>
 	)
 };
